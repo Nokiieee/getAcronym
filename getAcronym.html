@@ -68,6 +68,27 @@
     
 
     <script>
+        // C:\Enoch\Programming\freeCodeCamp\getAcronym
+
+        const word = "world health organization";
+
+        // const acronym = word.split(' ')
+        // .filter(word => word.length > 0)
+        // .map(word => word[0]
+        // .toUpperCase())
+        // .join('');
+
+        // console.log(acronym);
+
+        const acronym = (word) => {
+            return word
+            .split(' ')
+            .filter(word => word.length > 0)
+            .map(word => word[0].toUpperCase())
+            .join('');
+        }
+
+        console.log(acronym(word));
         
     </script>
 </body>
