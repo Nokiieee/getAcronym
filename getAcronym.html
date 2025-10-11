@@ -40,6 +40,7 @@
 
         input {
             border: none;
+            width: 50%;
             padding: 5px 10px;
             border-radius: 3px;
             margin-right: 3px;
@@ -55,14 +56,19 @@
 
         #initial {
             font-family: Poppins;
+            color: rgb(100, 100, 100);
+        }
+
+        #initial-result {
+            color: rgb(47, 117, 72);
         }
 
     </style>
 </head>
 <body>
     <div class="container">
-        <input type="text" placeholder="type here">
-        <button>Get Initial</button>
+        <input type="text" placeholder="type here" id="input">
+        <button id="button">Get Initial</button>
         <h1 id="initial">Initial: <span id="initial-result"></span></h1>
     </div>
     
@@ -70,7 +76,9 @@
     <script>
         // C:\Enoch\Programming\freeCodeCamp\getAcronym
 
-        const word = "world health organization";
+        const initial = document.getElementById('initial-result');
+        const input = document.getElementById('input');
+        const button = document.getElementById('button');
 
         // const acronym = word.split(' ')
         // .filter(word => word.length > 0)
@@ -80,15 +88,31 @@
 
         // console.log(acronym);
 
-        const acronym = (word) => {
-            return word
-            .split(' ')
-            .filter(word => word.length > 0)
-            .map(word => word[0].toUpperCase())
-            .join('');
+        const callAcronym = () => {
+            const word = input.value.trim();
+
+            const acronym = (word) => {
+                return word
+                .split(' ')
+                .filter(word => word.length > 0)
+                .map(word => word[0].toUpperCase())
+                .join('');
+            }
+
+            initial.innerHTML = acronym(word);
         }
 
-        console.log(acronym(word));
+        button.addEventListener('click', () => {
+            callAcronym();
+        });
+
+        input.addEventListener('keydown', (event) => {
+            if (event.key === "Enter") {
+                callAcronym();
+            }
+        });
+
+        
         
     </script>
 </body>
