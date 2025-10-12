@@ -95,7 +95,9 @@
                 return word
                 .split(' ')
                 .filter(word => word.length > 0)
-                .map(word => word[0].toUpperCase())
+                .map(word => word.toUpperCase())
+                .filter((word, index) => !["A", "FOR", "AN", "AND", "BY", "OF"].includes(word))  // filters/removes all the false
+                .map(word => word[0])
                 .join('');
             }
 
